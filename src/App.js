@@ -3,6 +3,7 @@ import './App.css';
 import './components/MemoryCard.css';
 import MemoryCard from './components/MemoryCard';
 
+
 function generateDeck () {
   const symbols = [`∆`,` ß`, `£`, `§`,`•`, `$`, `+`, `ø`];
   let deck = [];
@@ -115,6 +116,7 @@ class App extends Component {
       </div>
       );
     }
+
 }
 
 export default App;
