@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import './MemoryCard.css';
 
 class MemoryCard extends Component {
-
-    state = {
+    constructor(props) {
+        super(props);
+        this.state = {
         isFlipped: false
     };
+}
 
     clickHandler = () => {
         this.setState({
@@ -31,7 +33,7 @@ class MemoryCard extends Component {
                     />
                 </div>
                 <div className="MemoryCardFront">
-                    ∆
+                    {this.props.symbol}
                 </div>
             </div>
         </div>

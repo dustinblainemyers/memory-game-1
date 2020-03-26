@@ -16,7 +16,7 @@ function generateDeck () {
   shuffle(deck);
   console.log("this is the deck", deck);
   return deck;
-  
+
 }
   
   function shuffle(a) {
@@ -31,8 +31,7 @@ function generateDeck () {
 
 }
 
-
-class App extends Component() {
+class App extends Component {
 
   constructor(props){
     super(props);
@@ -43,6 +42,15 @@ class App extends Component() {
   }
 
   render() {
+
+    let cardsJSX = this.state.deck.map((card, index) => {
+      return <MemoryCard
+      symbol = {card.symbol}
+      isFlipped = {card.isFlipped}
+      />
+
+    });
+
     return (
       <div className="App">
         <header className="App-header">
@@ -50,22 +58,10 @@ class App extends Component() {
           <h2>Match Cards To Win</h2>
         </header>
         <div className="gameBoard">
-        <MemoryCard/>
-        <MemoryCard/>
-        <MemoryCard/>
-        <MemoryCard/>
-        <MemoryCard/>
-        <MemoryCard/>
-        <MemoryCard/>
-        <MemoryCard/>
-        <MemoryCard/>
-        <MemoryCard/>
-        <MemoryCard/>
-        <MemoryCard/>
-        <MemoryCard/>
-        <MemoryCard/>
-        <MemoryCard/>
-        <MemoryCard/>
+        {cardsJSX.slice(0,4)}
+        {cardsJSX.slice(4,8)}
+        {cardsJSX.slice(8,12)}
+        {cardsJSX.slice(12,16)}
         </div>
       </div>
       );
