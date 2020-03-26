@@ -63,13 +63,15 @@ class App extends Component {
         let card2 = newDeck[card2Index];
 
         if (card1.symbol !== card2.symbol) {
-          this.unflipCards(card1Index, card2Index);
+          setTimeout(() => {
+            this.unflipCards(card1Index, card2Index)
+          }, 1000)
         }
         newPickedCards = [];
       }
     this.setState({
       deck: newDeck, pickedCards: newPickedCards
-    })
+    });
   }
 
   unflipCards(card1Index, card2Index) {
@@ -94,7 +96,7 @@ class App extends Component {
       symbol = {card.symbol}
       isFlipped = {card.isFlipped}
       key = {index}
-      pickCard = {this.pickCard.bind(this,index)}/>
+      pickCard = {this.pickCard.bind(this, index)}/>
 
     });
 
