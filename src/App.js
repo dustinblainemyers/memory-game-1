@@ -55,9 +55,36 @@ class App extends Component {
       }
       return card;
     });
+
+      if (newPickedCards.length === 2) {
+        let card1Index = newPickedCards[0];
+        let card2Index = newPickedCards[1];
+        let card1 = newDeck[card1Index];
+        let card2 = newDeck[card2Index];
+
+        if (card1.symbol !== card2.symbol) {
+          this.unflipCards(card1Index, card2Index);
+        }
+        newPickedCards = [];
+      }
     this.setState({
       deck: newDeck, pickedCards: newPickedCards
     })
+  }
+
+  unflipCards(card1Index, card2Index) {
+
+    let newDeck = this.state.deck.map(card => {
+      return{...card};
+    })
+
+    newDeck[card1Index].isFlipped = false;
+    newDeck[card2Index].isFlipped = false;
+
+    this.setState({
+      deck: newDeck
+    })
+
   }
 
   render() {
@@ -66,7 +93,8 @@ class App extends Component {
       return <MemoryCard
       symbol = {card.symbol}
       isFlipped = {card.isFlipped}
-      key = {index}/>
+      key = {index}
+      pickCard = {this.pickCard.bind(this,index)}/>
 
     });
 
